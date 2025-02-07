@@ -1,0 +1,71 @@
+{
+
+  "position": "top",
+  "layer": "top",
+  "height": 30,
+  "spacing": 4,
+  "margin-top": 4,
+  "margin-left": 4,
+  "margin-right": 4,
+  "margin-bottom": 0,
+
+  "modules-left": [
+    "hyprland/workspaces",
+    "tray"
+  ],
+
+  "modules-center": [
+    "clock"
+  ],
+
+  "modules-right": [
+  
+    "hyprland/language",
+    "battery"
+  ],
+
+
+
+  "hyprland/workspaces": {
+    "active-only": false,
+    "persistent-workspaces": {
+      "*": 4, // 5 workspaces by default on every monitor
+    },
+    "format":"{icon}",
+    "format-icons": {
+      "default": "",
+      "active": ""
+    }
+  },
+
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10
+  },
+
+  "clock": {
+    "format": "{:%H:%M}"
+  },
+
+//  "custom/status": {
+//    "exec": "/path/to/status.sh"
+//  }
+
+  "hyprland/language": {
+    "format": "{}",
+    "format-en": "en",
+    "format-ru": "ru",
+    "format-sl": "sl"
+  },
+
+  "battery": {
+    "bat": "BAT0",
+    "interval": 1,
+    "format": "{icon} {capacity}%",
+    "format-icons": [ "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged":  "󰂄 {capacity}%"
+
+  }
+
+}
