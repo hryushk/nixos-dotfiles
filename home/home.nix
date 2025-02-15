@@ -2,7 +2,7 @@
 
 {
 
-  imports = [ ./hypr ./kitty ./dunst ./tofi ./vim ];  
+  imports = [ ./kitty ./dunst ./tofi ./vim ];  
 
   home.username = "hryu";
   home.homeDirectory = "/home/hryu";
