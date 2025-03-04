@@ -1,33 +1,29 @@
 { config, pkgs, ... }:
 
 {
-  boot = {
-    kernelModules = [ "amd-pstate" ];
-    kernelParams = [ "amd_pstate=guided" ];
-  };
-  powerManagement.cpuFreqGovernor = "ondemand";
+  powerManagement.cpuFreqGovernor = "schedutil";
 
   # TLP service.
   powerManagement.enable = true;
   services.tlp = {
     enable = true;
     settings = {
-      # CPU_DRIVER_OPMODE_ON_AC = "guided";
-      # CPU_DRIVER_OPMODE_ON_BAT = "guided";
-      #
-      # CPU_SCALING_GOVERNOR_ON_AC = "schedutil";
-      # CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
-      #
-      # PLATFORM_PROFILE_ON_AC = "balanced";
-      # PLATFORM_PROFILE_ON_BAT = "low-power";
-      #
-      # CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
-      # CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+      RADEON_DPM_STATE_ON_AC = "battery";
+      RADEON_DPM_STATE_ON_BAT = "battery";
 
-      CPU_SCALING_MIN_FREQ_ON_AC = 0;
-      CPU_SCALING_MAX_FREQ_ON_AC = 3300000;
-      CPU_SCALING_MIN_FREQ_ON_BAT = 0;
-      CPU_SCALING_MAX_FREQ_ON_BAT = 3300000;
+      CPU_DRIVER_OPMODE_ON_AC = "active";
+      CPU_DRIVER_OPMODE_ON_BAT = "active";
+
+      CPU_SCALING_GOVERNOR_ON_AC = "powersave";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+      CPU_ENERGY_PERF_POLICY_ON_AC = "power";
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+
+      CPU_MIN_PERF_ON_AC = 0;
+      CPU_MAX_PERF_ON_AC = 99;
+      CPU_MIN_PERF_ON_BAT = 0;
+      CPU_MAX_PERF_ON_BAT = 60;
 
       CPU_BOOST_ON_AC = 0;
       CPU_BOOST_ON_BAT = 0;
@@ -38,11 +34,20 @@
   };
 
   # Bluetooth.
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true; 
+    settings = {
+      General = {
+        Enable = "Source,Sink,Media,Socket";
+      };
+    };
+  };
   services.blueman.enable = true;
 
+  fonts.fontDir.enable = true;
+
   # Pipewire.
-  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -56,7 +61,7 @@
       "bluetooth.autoswitch-to-headset-profile" = false;
     };
   };
-
+ 
   # Flatpak.
   services.flatpak.enable = true;
   
@@ -92,11 +97,11 @@
     devmon.enable = true;
   };
 
-  xdg.portal = {
-    enable = true;
-    configPackages = [ pkgs.xdg-desktop-portal-hyprland ];
-    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
-  };
+  # xdg.portal = {
+  #   enable = true;
+  #   configPackages = [ pkgs.xdg-desktop-portal-hyprland ];
+  #   extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+  # };
   
   programs.hyprland.enable = true;
 }

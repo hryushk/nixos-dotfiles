@@ -2,7 +2,7 @@
 
 {
 
-  imports = [ ./kitty ./dunst ./tofi ./vim ];  
+  imports = [ ./firefox  ./discord ./kitty ./dunst ./tofi ./vim ];  
 
   home.username = "hryu";
   home.homeDirectory = "/home/hryu";
@@ -15,9 +15,11 @@
     userName  = "hryushk"; 
     userEmail = "wcaofow@tuta.io"; 
   };
-
+  
   home.packages = with pkgs; [
-    # Default packages.
+
+    # default 
+    gst_all_1.gst-vaapi
     wget
     telegram-desktop
     tor-browser
@@ -26,6 +28,7 @@
     mangohud
     goverlay
     firefox
+    ffmpeg_6
     
     # hypr 
     hypridle
@@ -35,7 +38,7 @@
     hyprcursor
     brightnessctl
     hyprshot
-    hyprnome    
+    hyprpicker
 
     # Gnome packages.
     nautilus
@@ -61,14 +64,14 @@
     libsecret
     brightnessctl
     pavucontrol
-    wireplumber
+    # wireplumber
     glib
     xorg.xwininfo
     openssl
     ventoy-full
     wl-clipboard
-    cpufrequtils
     lm_sensors
+    libinput
 
     # OBS-Studio
     obs-studio
@@ -79,13 +82,19 @@
     nerd-fonts.jetbrains-mono
     nerd-fonts.caskaydia-cove
     nerd-fonts.caskaydia-mono
-    ];
+    dejavu_fonts
+    tlwg
+    corefonts
+    vistafonts
+  ];
+
+  fonts.fontconfig.enable = true;
 
   home.file = {};
 
   home.sessionVariables = {
     NIXOS_OZONE_WL = 1;
- };
+  };
 
   qt = {
     enable = true;

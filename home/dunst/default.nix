@@ -18,11 +18,11 @@
                 height = 130;
                 font = "Cascadia Code Mono";
                 origin = "top-center";
-                background = "#222222";
+                background = "#2e2d2d";
                 notification_limit = 3;
                 frame_width = 0;
-                corner_radius = 0;
-                gap_size = 8;
+                corner_radius = 7;
+                gap_size = 4;
                 offset = "0x8";
                 stack_duplicates = false;
                 vertical_alignment = "center";

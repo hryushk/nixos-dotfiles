@@ -32,6 +32,13 @@
 #tray, #clock, #language, #battery, #workspaces{
   padding: 0 8px 0 8px;
 }
+#workspaces button.empty {
+  color: #a1a1a1;
+}
+
+#workspaces button.active {
+  color: white;
+}
 
 /*#workspaces button.active {*/
 /*  background: rgba(256, 256, 256, 0.04);*/
