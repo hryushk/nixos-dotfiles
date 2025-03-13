@@ -8,15 +8,12 @@
           url = "github:nix-community/home-manager/master";
           inputs.nixpkgs.follows = "nixpkgs";
         };
-        # hyprlock = {
-        #   url = "github:nix-community/nix4nvchad";
-        #   inputs.nixpkgs.follows = "nixpkgs";
-        # };
+        ags.url = "github:aylur/ags";
+        hyprswitch.url = "github:h3rmt/hyprswitch/release";
         # nvchad4nix = {
         #   url = "github:nix-community/nix4nvchad";
         #   inputs.nixpkgs.follows = "nixpkgs";
-        # };
-        # hyprswitch.url = "github:h3rmt/hyprswitch/release";
+        # };   
     };
 
     outputs = { self, nixpkgs, home-manager, ... }@inputs: 
@@ -30,6 +27,7 @@
         nixosConfigurations = {
             hryu = lib.nixosSystem {
                 inherit system;
+                specialArgs = { inherit inputs; };
                 modules = [ ./nixos/configuration.nix ];
             };
         };

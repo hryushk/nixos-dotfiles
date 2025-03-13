@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
 
@@ -44,7 +44,9 @@
 
   # Packages
   nixpkgs.config.allowUnfree = true;
-  environment.systemPackages = with pkgs; [ ];
+  environment.systemPackages =  [ 
+    inputs.hyprswitch.packages.x86_64-linux.default
+  ];
 
   programs.gnupg.agent = {
     enable = true;

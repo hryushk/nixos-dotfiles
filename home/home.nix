@@ -2,7 +2,7 @@
 
 {
 
-  imports = [ ./firefox  ./discord ./kitty ./dunst ./tofi ./vim ];  
+  imports = [ ./ags ./firefox  ./discord ./kitty ./dunst ./tofi ./vim ];  
 
   home.username = "hryu";
   home.homeDirectory = "/home/hryu";
@@ -27,7 +27,7 @@
     gamemode
     mangohud
     goverlay
-    firefox
+    librewolf
     ffmpeg_6
     
     # hypr 
@@ -82,6 +82,8 @@
     nerd-fonts.jetbrains-mono
     nerd-fonts.caskaydia-cove
     nerd-fonts.caskaydia-mono
+    nerd-fonts.monofur
+    nerd-fonts.intone-mono
     dejavu_fonts
     tlwg
     corefonts
