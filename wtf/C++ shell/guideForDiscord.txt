@@ -1,0 +1,6 @@
+using krisp patcher 
+➜  ~ krisp-patcher .config/discordcanary/0.0.594/modules/discord_krisp/discord_krisp.node
+version might change so WATCH OUT
+
+SOURCE
+https://pastebin.com/raw/8tQDsMVd

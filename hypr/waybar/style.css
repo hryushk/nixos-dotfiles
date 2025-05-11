@@ -4,6 +4,11 @@
   font-size: 16px;
 }
 
+window#waybar {
+  background-color: #232323;
+  border-radius: 10px 10px 0px 0px;
+}
+
 #tray menu{
   padding: 3px 3px 3px 3px;
   /*box-shadow: 10px 10px;*/
@@ -18,10 +23,15 @@
   background: rgba(256, 256, 256, 0.04);
 }
 
-#workspaces, #language, #battery, #clock, #tray, #tray menu {
+/*#workspaces, #language, #battery, #clock, #tray, #tray menu {*/
+/*  background-color: #232323;*/
+/*  border-radius: 7px;*/
+/*} */
+
+#tray menu {
   background-color: #232323;
   border-radius: 7px;
-} 
+}
 
 #workspaces button {
   padding: 0px 7px 0px 2px;
@@ -32,6 +42,7 @@
 #tray, #clock, #language, #battery, #workspaces{
   padding: 0 8px 0 8px;
 }
+
 #workspaces button.empty {
   color: #a1a1a1;
 }

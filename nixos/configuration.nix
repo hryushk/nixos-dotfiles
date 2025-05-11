@@ -1,13 +1,13 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
 
-  imports = [ ./additional-configuration.nix ./hardware-configuration.nix
+  imports = [ ./mesa.nix ./additional-configuration.nix ./hardware-configuration.nix
  ./greetd.nix
   ];
 
   # Enable latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages; 
+  boot.kernelPackages = pkgs.linuxPackages_latest; 
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -44,7 +44,9 @@
 
   # Packages
   nixpkgs.config.allowUnfree = true;
-  environment.systemPackages = with pkgs; [ ];
+  environment.systemPackages =  [ 
+    inputs.hyprswitch.packages.x86_64-linux.default
+  ];
 
   programs.gnupg.agent = {
     enable = true;

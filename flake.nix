@@ -3,20 +3,21 @@
   description = "NixOS configuration";
 
     inputs = {
-        nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-        home-manager = {
-          url = "github:nix-community/home-manager/master";
-          inputs.nixpkgs.follows = "nixpkgs";
-        };
-        # hyprlock = {
-        #   url = "github:nix-community/nix4nvchad";
-        #   inputs.nixpkgs.follows = "nixpkgs";
-        # };
-        # nvchad4nix = {
-        #   url = "github:nix-community/nix4nvchad";
-        #   inputs.nixpkgs.follows = "nixpkgs";
-        # };
-        # hyprswitch.url = "github:h3rmt/hyprswitch/release";
+      hyprland.url = "github:hyprwm/Hyprland";
+      nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+      home-manager = {
+        url = "github:nix-community/home-manager/master";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+      ags.url = "github:aylur/ags";
+      hyprswitch.url = "github:h3rmt/hyprswitch/release";
+      zen-browser.url = "github:0xc000022070/zen-browser-flake";
+      spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+      nixcord.url = "github:kaylorben/nixcord";
+# nvchad4nix = {
+#   url = "github:nix-community/nix4nvchad";
+#   inputs.nixpkgs.follows = "nixpkgs";
+# };   
     };
 
     outputs = { self, nixpkgs, home-manager, ... }@inputs: 
@@ -30,6 +31,7 @@
         nixosConfigurations = {
             hryu = lib.nixosSystem {
                 inherit system;
+                specialArgs = { inherit inputs; };
                 modules = [ ./nixos/configuration.nix ];
             };
         };

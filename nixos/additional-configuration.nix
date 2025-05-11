@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   powerManagement.cpuFreqGovernor = "schedutil";
@@ -25,11 +25,16 @@
       CPU_MIN_PERF_ON_BAT = 0;
       CPU_MAX_PERF_ON_BAT = 60;
 
+      CPU_SCALING_MIN_FREQ_ON_AC = 440000;
+      CPU_SCALING_MAX_FREQ_ON_AC = 2400000;
+      CPU_SCALING_MIN_FREQ_ON_BAT = 440000;
+      CPU_SCALING_MAX_FREQ_ON_BAT = 2400000;
+
       CPU_BOOST_ON_AC = 0;
       CPU_BOOST_ON_BAT = 0;
 
       START_CHARGE_THRESH_BAT0 = 40; # 40 and bellow it starts to charge
-      STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
+      STOP_CHARGE_THRESH_BAT0 = 81; # 80 and above it stops charging
     };
   };
 
@@ -43,9 +48,8 @@
     };
   };
   services.blueman.enable = true;
-
   fonts.fontDir.enable = true;
-
+hardware.enableAllFirmware = true;
   # Pipewire.
   security.rtkit.enable = true;
   services.pipewire = {
@@ -69,7 +73,7 @@
     enable = true;
     enable32Bit = true;
   };
-
+  #
   # Gnome polkit (requeires exec-once).
   systemd = {
   user.services.polkit-gnome-authentication-agent-1 = {
@@ -103,5 +107,15 @@
   #   extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
   # };
   
-  programs.hyprland.enable = true;
+  nix.settings = {
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+  };
+  programs.hyprland = {
+    enable = true;
+# set the flake package
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+# make sure to also set the portal package, so that they are in sync
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  };
 }
