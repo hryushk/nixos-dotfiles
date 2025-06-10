@@ -10,7 +10,7 @@
 # };
 
 # ADD CPU FREQ LOCK ALIES
-  programs.thefuck.enable = true;
+  # programs.thefuck.enable = true;
 
   programs.zsh = {
     enable = true;
@@ -26,7 +26,7 @@
       newBuild = "sudo nixos-rebuild switch --flake /home/hryu/nixos-dotfiles/";
       homeUpdate = "home-manager switch --flake /home/hryu/nixos-dotfiles/";
       clean = "nix-collect-garbage";
-      CCS = "nix-shell /home/hryu/shells/gcc/shell.nix --command zsh";
+      CCS = "nix-shell /home/hryu/nixos-dotfiles/shells/gcc/shell.nix --command zsh";
     };
 
     history.size = 10000;

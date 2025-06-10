@@ -1,8 +1,8 @@
 { config, pkgs, inputs, ... }:
 
 {
+  hardware.opentabletdriver.enable = true;
   powerManagement.cpuFreqGovernor = "schedutil";
-
   # TLP service.
   powerManagement.enable = true;
   services.tlp = {

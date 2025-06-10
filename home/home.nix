@@ -3,10 +3,6 @@
 {
 
   imports = [ 
-    inputs.spicetify-nix.homeManagerModules.default
-    inputs.nixcord.homeModules.nixcord
-    ./nixcord 
-    ./spicetify 
     ./browser 
     ./discord 
     ./ags 
@@ -26,7 +22,7 @@
   home.file = {};
 
   home.sessionVariables = {
-    NIXOS_OZONE_WL = 1;
+    # NIXOS_OZONE_WL = 1;
   };
 
   programs.home-manager.enable = true;

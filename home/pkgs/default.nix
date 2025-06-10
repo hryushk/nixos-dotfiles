@@ -52,10 +52,8 @@
     glib
     xorg.xwininfo
     openssl
-    ventoy-full
+    # ventoy-full
     wl-clipboard
-    lm_sensors
-    libinput
 
     # OBS-Studio
     obs-studio
@@ -76,6 +74,16 @@
     anonymousPro
     fira-code
     source-code-pro
+
+    wineWowPackages.stagingFull
+    libgcc 
+    gcc
+    gdb
+    lutris
+
+    steam
+    logseq
+    libinput
     ];
 
   nixpkgs.config.allowUnfree = true; 

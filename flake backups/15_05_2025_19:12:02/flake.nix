@@ -10,10 +10,10 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
       ags.url = "github:aylur/ags";
-      # hyprswitch.url = "github:h3rmt/hyprswitch/release";
+      hyprswitch.url = "github:h3rmt/hyprswitch/release";
       zen-browser.url = "github:0xc000022070/zen-browser-flake";
-      # spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-      # nixcord.url = "github:kaylorben/nixcord";
+      spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+      nixcord.url = "github:kaylorben/nixcord";
 # nvchad4nix = {
 #   url = "github:nix-community/nix4nvchad";
 #   inputs.nixpkgs.follows = "nixpkgs";

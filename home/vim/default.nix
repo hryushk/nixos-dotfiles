@@ -8,10 +8,10 @@
 
   programs.neovim = {
     enable = true;
-    plugins = with pkgs; [
-      vimPlugins.clang_complete
-
-    ];
+    # plugins = with pkgs; [
+    #   vimPlugins.clang_complete
+    #
+    # ];
   };
 
 }
